@@ -1,0 +1,99 @@
+.user-login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.user-login-form form {
+  width: 500px;
+  height: 600px;
+  border: 1px solid #95a0a7;
+  border-radius: 8px;
+  padding: 43px;
+  box-shadow: -10px 12px 0px 0px #fce0b3;
+}
+.user-login-form .form-title {
+  text-align: center;
+  font-size: 35px;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+.user-login-form .input-group label {
+  width: 100%;
+  display: block;
+  font-size: 17px;
+  text-transform: capitalize;
+}
+.user-login-form .input-group input {
+  width: 100%;
+  height: 47px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+.user-login-form .input-button input {
+  background-color: #fce0b3;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  height: 45px;
+  font-size: 21px;
+  text-transform: capitalize;
+  margin-top: 27px;
+  cursor: pointer;
+}
+.user-login-form .sign-up {
+  margin: 10px;
+  text-align: center;
+}
+.user-login-form .sign-up a {
+  color: #ff9900;
+  padding-left: 5px;
+  text-decoration: none;
+}
+.user-login-form .sign-up a:hover {
+  text-decoration: underline;
+}
+.user-login-form .google-sign-in button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  padding: 8px 10px;
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1.5px solid #95a0a7;
+  cursor: pointer;
+  margin-top: 30px;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.user-login-form .google-sign-in button span {
+  margin-left: 5px;
+}
+.user-login-form .or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+.user-login-form .or .text {
+  margin: 0 10px;
+  text-transform: uppercase;
+}
+.user-login-form .or::after {
+  content: "";
+  display: block;
+  width: 145px;
+  height: 2px;
+  background-color: #95a0a7;
+}
+.user-login-form .or::before {
+  content: "";
+  display: block;
+  width: 145px;
+  height: 2px;
+  background-color: #95a0a7;
+}
