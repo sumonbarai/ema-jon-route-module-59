@@ -1,44 +1,35 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import googleLogo from "../../images/google.png";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { useNavigate } from "react-router-dom";
-const Signup = () => {
-  let navigate = useNavigate();
-  const [createUserWithEmailAndPassword, user] =
-    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
-  const [error, setError] = useState("");
-  const handleEmailBlur = (event) => {
-    setEmail(event.target.value);
-  };
-  const handlePasswordBlur = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleConformPasswordBlur = (event) => {
-    setConformPassword(event.target.value);
-  };
+  const [err, setErr] = useState("");
+  const [createUserWithEmailAndPassword, user] =
+    useCreateUserWithEmailAndPassword(auth);
+  const navigate = useNavigate();
 
+  // create user in sign up file
   const createUser = (event) => {
     event.preventDefault();
     if (password !== conformPassword) {
-      setError("password does not match");
+      setErr("your password does not match");
       return;
     }
     if (password.length < 6) {
-      setError("password under 6 character");
+      setErr("your password under six characters");
       return;
     }
     createUserWithEmailAndPassword(email, password);
   };
-  // if user login then redirect in shop page
+
+  // go to shop page
   if (user) {
     navigate("/shop");
-    console.log(user);
   }
 
   return (
@@ -48,7 +39,7 @@ const Signup = () => {
         <div className="input-group">
           <label htmlFor="email">Email</label>
           <input
-            onBlur={handleEmailBlur}
+            onBlur={(event) => setEmail(event.target.value)}
             type="email"
             name="email"
             id="email"
@@ -58,7 +49,7 @@ const Signup = () => {
         <div className="input-group">
           <label htmlFor="password">password</label>
           <input
-            onBlur={handlePasswordBlur}
+            onBlur={(event) => setPassword(event.target.value)}
             type="password"
             name="password"
             id="password"
@@ -68,14 +59,14 @@ const Signup = () => {
         <div className="input-group">
           <label htmlFor="conform-password">Conform Password</label>
           <input
-            onBlur={handleConformPasswordBlur}
+            onBlur={(event) => setConformPassword(event.target.value)}
             type="password"
             name="conform-password"
             id="conform-password"
             required
           />
         </div>
-        <p style={{ color: "red" }}>{error}</p>
+        {err && <p style={{ color: "red" }}>{err}</p>}
         <div className="input-button">
           <input type="submit" value="Sign Up" />
         </div>
